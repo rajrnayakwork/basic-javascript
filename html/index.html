@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Index File</title>
+	</head>
+	<body>
+		<div class="text changer function">
+			<h1 id="info">click button for changing the below text</h1>
+			<br />
+			<button onclick="changeTheText()">submit</button>
+			<h2 id="main_h1">user Name</h2>
+		</div>
+
+		<div class="object Properties & Methods">
+			<button onclick="object()">Submit</button>
+			<h2 id="name"></h2>
+		</div>
+
+		<div class="event">
+			<div class="onchange">
+				<select id="onchange" onchange="onChange()">
+					<option disabled selected>select any one</option>
+					<option value="kalol">kalol</option>
+					<option value="kadi">kadi</option>
+					<option value="kashmir">kashmir</option>
+				</select>
+				<h2 id="text_of_onchange"></h2>
+			</div>
+		</div>
+		<div class="array">
+			<button onclick="array()">Submit</button>
+			<h2 id="text_of_array"></h2>
+		</div>
+
+		<div class="set">
+			<input
+				type="text"
+				name="data"
+				id="nameofset"
+				onchange="setdata()" />
+		</div>
+	</body>
+	<footer>
+		<script src="../js/main.js" defer></script>
+	</footer>
+</html>
