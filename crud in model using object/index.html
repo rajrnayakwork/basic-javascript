@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bootstrap demo</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+		<style>
+			.center {
+				margin: auto;
+				width: 60%;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="jumbotron text-center pt-5">
+			<div class="container">
+				<h1 class="jumbotron-heading">Employee Details</h1>
+			</div>
+		</section>
+		<div class="center pt-5">
+			<button type="submit" class="centerbtn btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New One</button>
+			<ul class="list-group list-group-horizontal mt-3">
+				<li class="list-group-item" id="total">Total rows : 1</li>
+				<!-- <li class="list-group-item">Total rows : 0</li>
+				<li class="list-group-item">Total rows : 0</li> -->
+			</ul>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Sr.No</th>
+						<th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
+						<th scope="col">Age</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider" id="show_rows">
+					<tr>
+						<th scope="row">1</th>
+						<td>none</td>
+						<td>none</td>
+						<td>none</td>
+						<td>
+							<button type="button" class="btn btn-primary">Edit</button>
+							<button type="button" class="btn btn-danger">Delete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee Form</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label class="form-label">First Name</label>
+								<input class="form-control" type="text" id="first_name" />
+								<!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Last Name</label>
+								<input class="form-control" type="text" id="last_name" />
+							</div>
+							<div class="mb-3 form-label">
+								<label class="form-label">Age</label>
+								<input class="form-control" type="text" id="age" />
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addEmployee()">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button style="display: none" type="submit" id="modelopen" class="centerbtn btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee Form</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label class="form-label">First Name</label>
+								<input class="form-control" type="text" id="first_name" />
+								<!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+							</div>
+							<div class="mb-3">
+								<label class="form-label">Last Name</label>
+								<input class="form-control" type="text" id="last_name" />
+							</div>
+							<div class="mb-3 form-label">
+								<label class="form-label">Age</label>
+								<input class="form-control" type="text" id="age" />
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addEmployee()">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+	</body>
+</html>
