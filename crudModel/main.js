@@ -5,6 +5,9 @@ function addStudent() {
 	let first_name = document.getElementById("first_name").value;
 	let last_name = document.getElementById("last_name").value;
 	let age = document.getElementById("age").value;
+	let gujarati = "";
+	let hindi = "";
+	let english = "";
 	let object = {
 		first_name: first_name,
 		last_name: last_name,
@@ -34,35 +37,11 @@ function addStudent() {
 	}
 }
 
-function editStudent() {
-	let id = document.getElementById("edit_id").value;
-	let first_name = document.getElementById("edit_first_name").value;
-	let last_name = document.getElementById("edit_last_name").value;
-	let age = document.getElementById("edit_age").value;
-	let object = {
-		first_name: first_name,
-		last_name: last_name,
-		age: age,
-		subjects: {
-			0: undefined,
-			1: undefined,
-			2: undefined,
-		},
-	};
-	if (subjects[0] == true) {
-		object.subjects[0] = "gujarati";
-	}
-	if (subjects[1] == true) {
-		object.subjects[1] = "hindi";
-	}
-	if (subjects[2] == true) {
-		object.subjects[2] = "english";
-	}
-	let row = validation(object);
-	if (row) {
-		students[id] = row;
-		emptyAll();
-		listRefresh();
+function validation(row) {
+	if (row.first_name && row.last_name && row.age) {
+		if (row.subjects[0] != null || row.subjects[1] != null || row.subjects[2] != null) {
+			return row;
+		}
 	}
 }
 
@@ -85,52 +64,6 @@ function checkSubjet() {
 		1: hindi,
 		2: english,
 	};
-}
-function checkSubjetForEdit() {
-	let gujarati = document.getElementById("edit_gujarati").checked;
-	let hindi = document.getElementById("edit_hindi").checked;
-	let english = document.getElementById("edit_english").checked;
-	subjects = {
-		0: gujarati,
-		1: hindi,
-		2: english,
-	};
-}
-
-function editRow(id) {
-	document.getElementById("modelopen").click();
-	document.getElementById("edit_id").value = id;
-	document.getElementById("edit_first_name").value = students[id]["first_name"];
-	document.getElementById("edit_last_name").value = students[id]["last_name"];
-	document.getElementById("edit_age").value = students[id]["age"];
-	if (students[id]["subjects"][0] != undefined) {
-		document.getElementById("edit_gujarati").checked = true;
-	} else {
-		document.getElementById("edit_gujarati").checked = false;
-	}
-	if (students[id]["subjects"][1] != undefined) {
-		document.getElementById("edit_hindi").checked = true;
-	} else {
-		document.getElementById("edit_hindi").checked = false;
-	}
-	if (students[id]["subjects"][2] != undefined) {
-		document.getElementById("edit_english").checked = true;
-	} else {
-		document.getElementById("edit_english").checked = false;
-	}
-}
-
-function deleteRow(id) {
-	delete students[id];
-	listRefresh();
-}
-
-function validation(row) {
-	if (row.first_name && row.last_name && row.age) {
-		if (row.subjects[0] != null || row.subjects[1] != null || row.subjects[2] != null) {
-			return row;
-		}
-	}
 }
 
 function listRefresh() {
@@ -165,6 +98,36 @@ function listRefresh() {
 		document.getElementById("show_rows").innerHTML = text;
 	}
 	total();
+}
+
+function editRow(id) {
+	document.getElementById("modelopen").click();
+	document.getElementById("edit_id").value = id;
+	document.getElementById("edit_first_name").value = students[id]["first_name"];
+	document.getElementById("edit_last_name").value = students[id]["last_name"];
+	document.getElementById("edit_age").value = students[id]["age"];
+}
+
+function deleteRow(id) {
+	delete students[id];
+	listRefresh();
+}
+
+function editStudent() {
+	let id = document.getElementById("edit_id").value;
+	let first_name = document.getElementById("edit_first_name").value;
+	let last_name = document.getElementById("edit_last_name").value;
+	let age = document.getElementById("edit_age").value;
+	let object = {
+		first_name: first_name,
+		last_name: last_name,
+		age: age,
+	};
+	let row = validation(object);
+	if (row) {
+		students[id] = row;
+		listRefresh();
+	}
 }
 
 function total() {
