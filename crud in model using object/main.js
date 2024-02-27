@@ -36,13 +36,13 @@ function addStudent() {
 
 function editStudent() {
 	let id = document.getElementById("edit_id").value;
-	let first_name = document.getElementById("edit_first_name").value;
-	let last_name = document.getElementById("edit_last_name").value;
-	let age = document.getElementById("edit_age").value;
+	let FirstName = document.getElementById("edit_first_name").value;
+	let LastName = document.getElementById("edit_last_name").value;
+	let Age = document.getElementById("edit_age").value;
 	let object = {
-		first_name: first_name,
-		last_name: last_name,
-		age: age,
+		first_name: FirstName,
+		last_name: LastName,
+		age: Age,
 		subjects: {
 			0: undefined,
 			1: undefined,
@@ -105,19 +105,23 @@ function editRow(id) {
 	document.getElementById("edit_age").value = students[id]["age"];
 	if (students[id]["subjects"][0] != undefined) {
 		document.getElementById("edit_gujarati").checked = true;
+		subjects[0] = true;
 	} else {
 		document.getElementById("edit_gujarati").checked = false;
 	}
 	if (students[id]["subjects"][1] != undefined) {
 		document.getElementById("edit_hindi").checked = true;
+		subjects[1] = true;
 	} else {
 		document.getElementById("edit_hindi").checked = false;
 	}
 	if (students[id]["subjects"][2] != undefined) {
 		document.getElementById("edit_english").checked = true;
+		subjects[2] = true;
 	} else {
 		document.getElementById("edit_english").checked = false;
 	}
+	console.log(Object.values(subjects));
 }
 
 function deleteRow(id) {
@@ -126,10 +130,8 @@ function deleteRow(id) {
 }
 
 function validation(row) {
-	if (row.first_name && row.last_name && row.age) {
-		if (row.subjects[0] != null || row.subjects[1] != null || row.subjects[2] != null) {
-			return row;
-		}
+	if (row.first_name && row.last_name && row.age && (row.subjects[0] != null || row.subjects[1] != null || row.subjects[2] != null)) {
+		return row;
 	}
 }
 
@@ -189,4 +191,16 @@ function total() {
 	document.getElementById("adult").innerHTML = "Total Adult : " + adult;
 	document.getElementById("young").innerHTML = "Total Young : " + young;
 	document.getElementById("older").innerHTML = "Total Older : " + older;
+}
+
+function searchName() {
+	let column = document.getElementById("column").value;
+	let value = document.getElementById("searchbox").value;
+	for (const row in students) {
+		if (students[row][column] == value) {
+			console.log(value);
+		}
+	}
+	document.getElementById("searchbox").value = "";
+	document.getElementById("column").selectedIndex = 0;
 }
